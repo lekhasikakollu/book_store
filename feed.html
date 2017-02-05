@@ -1,0 +1,58 @@
+<html>
+<head>
+<title>BookShoppe.com</title>
+<link rel='stylesheet' type='text/css' href='./css/styles_3.css' />
+<link rel='stylesheet' type='text/css' href='./css/mybutton.css' />
+<link rel='stylesheet' type='text/css' href='./css/abc.css' />
+<link rel='stylesheet' type='text/css' href='./css/styles.css' />	
+<link rel='stylesheet' type='text/css' href='./css/button.css' />
+
+<style type="text/css">
+   .a {
+	border:2px solid #456879;
+	border-radius:10px;
+	height: 30px;
+	width: 230px;
+}
+    .image{
+        float:right;
+    }
+table{
+    font-family: cursive;
+    
+    margin-left:100;
+}
+body
+{
+background: url("./images/grey.jpg");
+background-repeat:repeat;
+}
+</style>
+</head>   
+<img src="./images/buk.jpg" align="left" width="1350" height="130">
+</br></br></br><br/><br/>
+<div id='cssmenu'>
+<ul>  
+<li class='active'><a href='home.jsp'><span>Home</span></a></li>
+<li><a href='about.jsp'><span>About Us</span></a></li>  
+<li><a href='book.jsp'><span>Books</span></a></li> 
+<li><a href='author.jsp'><span>Authors</span></a></li>
+<li><a href='categ.jsp'><span>Categories</span></a></li>
+<li><a href='contact.jsp'><span> Contact Us</span></a></li>  
+<li><a href='feed.jsp'><span>Feed Back</span></a></li>     
+<li><a href='logout.jsp'><span>Logout</span></a></li>
+</ul>
+</div>
+<br/><br/>
+<body>
+    <br><br/><br/><br/><form name="form" method="post"  align="center" action="feedback.jsp";>
+<center>
+    <font size="4" family="forte" style="bold">Username<font color="red">*</font>:</font><input class="a"type="text" name="user" /><br/><br/>
+    <font size="4" family="forte">Feedback:</font><textarea rows="4" class="a" name="feed">
+
+</textarea> 
+    </center>
+<input type="submit" value="Submit" name="Submit" id="submit"/>
+</form>
+    </body>
+</html>

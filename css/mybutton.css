@@ -1,0 +1,28 @@
+input#shiny {
+padding: 4px 15px;
+/*give the background a gradient*/
+background:white; /*fallback for browsers that don't support gradients*/
+background: -webkit-linear-gradient(top, #C8C8C8,#686868 );
+background: -moz-linear-gradient(top,  #C8C8C8,#686868);
+background: -o-linear-gradient(top,  #C8C8C8,#686868);
+background: linear-gradient(top,  #C8C8C8,#686868);
+border:2px outset white;
+/*style the text*/
+font-family: "Comic Sans MS", cursive, sans-serif; 
+font-size:16px;
+font-weight:bolder;
+color:black;
+text-shadow: 1px 1px 10px #404040;
+/*add to small curve to the corners of the button*/
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 15px;
+/*give the button a drop shadow*/
+-webkit-box-shadow: rgba(0, 0, 0, .55) 0 1px 6px;
+-moz-box-shadow: rgba(0, 0, 0, .55) 0 1px 6px;
+box-shadow: rgba(0, 0, 0, .55) 0 1px 6px;
+}
+/****NOW STYLE THE BUTTON'S HOVER STATE***/
+input#shiny:hover, input#shiny:focus {
+border:2px solid black;
+}

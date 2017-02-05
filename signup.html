@@ -1,0 +1,71 @@
+
+<html>
+<head>
+<title>Register</title>
+<link rel='stylesheet' type='text/css' href='./css/styles.css' />	
+<link rel='stylesheet' type='text/css' href='./css/button.css' />
+<script type="text/javascript" language="javascript">
+function validate(){
+if(((document.getElementById("uname").value).search(/[^A-Za-z]/) != -1)||
+    (document.getElementById("uname").value=="")){
+alert("Invalid Username ");
+return false;
+}
+if(document.getElementById("pass").value == ""){
+ alert("Invalid Password!");
+  return false;
+}
+
+return true;
+}
+</script>
+<style type="text/css">
+    .a {
+	border:2px solid #456879;
+	border-radius:10px;
+	height: 30px;
+	width: 230px;
+}
+    .td{
+        font-family:Lucida console;
+        font-size: 100;
+    }
+    body{
+background-color:#BDBDBD;
+background-repeat:no-repeat;
+background-size:cover;
+background: url("./images/grey.jpg");
+background-repeat:repeat;
+}
+
+</style>
+</head>
+
+<body>
+
+<img src="./images/buk.jpg"  width="1350" height="130">
+<br/><br/><br/><br/><br/><br/>
+
+<form name="form" method="post"  align="center" onSubmit="return validate();" action="reg.jsp";>
+      <center><table cellspacing="10">
+          <tr><td><font color="black" size="4">Username <font color="red"> * </font> :</td><td><input type="text" name="user" id="uname" class="a"/></font></td></tr>
+
+<tr><td><font color="black" size="4">Password <font color="red"> * </font> :</td><td><input type="password" name="password" id="pass" class="a"/></font></td></tr>
+<tr><td><font color="black" size="4">Confirm <br/> Password <font color="red"> * </font> :</td><td><input type="password" name="password" id="pass" class="a"/></font></td></tr>
+
+<tr><td><font color="black" size="4">Name <font color="red"> * </font> :</td><td><input type="text" name="name" id="name" class="a" /></font></td></tr>
+
+<tr><td><font color="black" size="4">Email <font color="red"> * </font> :</td><td><input type="text" name="email" id="email" class="a"/></font></td></tr>
+
+<tr><td><font color="black" size="4">Contact No.<font color="red"> * </font> :</td><td><input type="text" name="mob" id="no" class="a"/></font></td></tr>
+</br>
+    </table><br/><br/><br/>
+<input type="submit" value="Signup" name="Signup" id="submit"/></center>
+</form>
+
+
+
+
+
+</body>
+</html>

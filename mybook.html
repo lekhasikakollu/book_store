@@ -1,0 +1,81 @@
+<%@ page import="java.sql.*"%>
+<html>
+<head>
+<title>BookShoppe.com</title>
+<link rel='stylesheet' type='text/css' href='./css/styles_3.css' />
+<link rel='stylesheet' type='text/css' href='./css/mybutton.css' />
+<link rel='stylesheet' type='text/css' href='./css/x.css' />
+<style type="text/css">
+body
+{
+background: url("./images/g.jpg");
+background-repeat:repeat;
+}
+</style>
+</head> 
+<body>
+<img src="./images/buk.jpg" align="left" width="1350" height="130">
+<div id='cssmenu'>
+<ul>  
+<li class='active'><a href='home.jsp'><span> Home  </span></a></li>
+<li><a href='about.jsp'><span>About Us</span></a></li>  
+<li><a href='book.jsp'><span>Books</span></a></li> 
+<li><a href='author.jsp'><span>Authors</span></a></li>
+<li><a href='categ.jsp'><span>Categories</span></a></li>
+<li><a href='contact.jsp'><span> Contact Us</span></a></li>  
+<li><a href='feed.jsp'><span>Feed Back</span></a></li>     
+<li><a href='logout.jsp'><span>Logout</span></a></li>
+</ul>
+</div>
+<br/><br/>
+<br/><br/>
+
+<form method="post" action="cart.jsp">
+<%
+int count=0;
+String c=request.getParameter("cno");
+int f=Integer.parseInt(c);
+    
+    try {
+        Class.forName("com.mysql.jdbc.Driver");
+  Connection con = null;
+        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/book", "root", "lekha");
+        Statement st = con.createStatement();
+        ResultSet rs= st.executeQuery("select * from cat");
+                        
+                
+out.println("<table class=\"one\"   cellspacing='"+20+"' cellpadding='"+6+"' bgcolor=\"white\"  valign=\"middle\" >");  
+                         
+   out.println("<tr align=\"center\" class=\"row\"><th class=\"three\">Book Categories</th></tr>");
+while(rs.next()){
+     
+    out.println("<tr align=\"center\" class=\"row\"><td><a href=\"mybook.jsp?cno="+rs.getString("cid")+"\">"+rs.getString("cname")+"</a></td></tr>");
+  
+                }
+out.println("</table>");
+
+
+ResultSet rs2 = st.executeQuery("select * from book where cid="+f+" ");
+                        
+out.println("<table class=\"two\" ALIGN=\"center\"  cellspacing='"+30+"' width='"+900+"' cellpadding='"+2+"' valign=\"middle\" >");                             
+
+out.println("<tr>");    
+while(rs2.next()){
+    out.println("<tr><td>"+"<img src="+rs2.getString("path")+" class=\"me\"/>"+"</td><td style=\"background-image:url(./images/grey.jpg);background-repeat:repeat;\"><b>"+rs2.getString("bname")+"</b><br/>By :"+rs2.getString("author")+"<br/>"+rs2.getString("des")+"</br><br/>Rs.."+rs2.getString("uprice")+"/-<br/>qty:<input type=\"text\" name="+rs2.getString("tname")+"id=\"lekha\" value='"+1+"' class=\"me1\"/><br/><br/><input type=\"submit\" id=\"shiny\" namel="+rs2.getString("aname")+" value=\"Add to Cart\" />"+"</td></tr>");
+   
+}
+
+}     
+
+     catch (Exception e) {
+        out.println(e);
+    }
+
+%>
+</form>
+
+</body>
+</html>
+
+
+

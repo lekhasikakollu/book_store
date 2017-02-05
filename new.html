@@ -1,0 +1,148 @@
+<%@ page import="java.sql.*"%>
+<html>
+<head>
+<title>Apples</title>
+<link rel='stylesheet' type='text/css' href='table.css' />
+<link rel='stylesheet' type='text/css' href='button.css' />
+<link rel='stylesheet' type='text/css' href='bar.css' />
+<link rel='stylesheet' type='text/css' href='imgstyle.css' />
+<style type="text/css">
+body{
+background:url("1.jpg");
+background-repeat:repeat-y;
+background-size:100%;
+}
+body {
+    text-align: center;
+}
+</style>
+</head>
+<body>
+<img src="41.JPG" width="1090" height="150">
+<center>
+<div id='cssmenu'>
+<ul>
+   <li class='active'><a href='Home.jsp'><span>Home</span></a></li>
+   <li class='has-sub'><a href='#'><span>S-Cube</span></a>
+      <ul>
+         <li><a href='AboutUs.jsp'><span>About Us</span></a></li>
+         <li><a href='ContactUs.jsp'><span>Contact Us</span></a></li>
+         <li><a href='Login.jsp'><span>Login</span></a></li>
+         <li><a href='Register.jsp'><span>Register</span></a></li>
+         <li class='last'><a href='TermsConditions.jsp'><span>Terms & Conditions</span></a></li>
+      </ul>
+   </li>
+   <li class='has-sub'><a href='#'><span>Fruits</span></a>
+      <ul>
+         <li><a href='Apples.jsp'><span>Apples</span></a></li>
+         <li><a href='Oranges.jsp'><span>Oranges</span></a></li>
+         <li class='last'><a href='FOthers.jsp'><span>Others</span></a></li>
+      </ul>
+   </li>
+   <li class='has-sub'><a href='#'><span>Vegetables</span></a>
+      <ul>
+         <li><a href='LeafyVegetables.jsp'><span>Leafy Vegetables</span></a></li>
+         <li><a href='RootVegetables.jsp'><span>Root Vegetables</span></a></li>
+         <li class='last'><a href='VOthers.jsp'><span>Others</span></a></li>
+      </ul>
+   </li>
+   <li class='has-sub'><a href='#'><span>Grocery</span></a>
+      <ul>
+         <li><a href='DalsPulses.jsp'><span>Dals & Pulses</span></a></li>
+         <li><a href='DryFruits.jsp'><span>Dry Fruits</span></a></li>
+         <li><a href='EdibleOils.jsp'><span>Edible Oils</span></a></li>
+         <li><a href='Rice.jsp'><span>Rice</span></a></li>
+         <li class='last'><a href='SpicesMasalas.jsp'><span>Spices & Masalas</span></a></li>
+      </ul>
+   </li>
+    <li class='has-sub'><a href='#'><span>Instant Foods</span></a>
+      <ul>
+         <li><a href='CannedFood.jsp'><span>Canned Food</span></a></li>
+         <li><a href='InstantMakers.jsp'><span>Instant Makers</span></a></li>
+         <li><a href='Pickels.jsp'><span>Pickles</span></a></li>
+         <li class='last'><a href='VegSnacks.jsp'><span>Veg Snacks</span></a></li>
+      </ul>
+   </li>
+   <li class='has-sub'><a href='#'><span>Bakery</span></a>
+      <ul>
+         <li><a href='Beverages.jsp'><span>Beverages</span></a></li>
+         <li><a href='Biscuits.jsp'><span>Biscuits</span></a></li>
+         <li><a href='Cakes.jsp'><span>Cakes</span></a></li>
+         <li><a href='Chocolates.jsp'><span>Chocolates</span></a></li>
+         <li><a href='IceCreams.jsp'><span>Ice Creams</span></a></li>
+         <li class='last'><a href='Sweets.jsp'><span>Sweets</span></a></li>
+      </ul>
+   </li>
+   <li class='has-sub'><a href='#'><span>Household</span></a>
+      <ul>
+         <li><a href='CleaningAccessories.jsp'><span>Cleaning Accessories</span></a></li>
+         <li><a href='PersonalCare.jsp'><span>Personal Care</span></a></li>
+         <li><a href='Plasticware.jsp'><span>Plasticware</span></a></li>
+         <li class='last'><a href='Stationery.jsp'><span>Stationery</span></a></li>
+      </ul>
+   </li>
+   <li class='has-sub last'><a href='logout.jsp'><span>Logout</span></a></li>
+   </ul>
+</div>
+</center>
+<br/>
+<form align="right">
+<a href="Cart.jsp" class="button">
+<span>View Cart</span>
+</a>
+</form>
+<%
+    
+    try {
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection con = null;
+        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/scube", "root", "sindhu");
+        Statement st = con.createStatement();
+       
+      ResultSet rs1 = st.executeQuery("select cname from category where cid=(select cid from product where pid=01001)");
+        int count=0;       
+      out.println("<center>");
+         out.println("<div class=\"table\">");
+        
+   out.println("<table border='"+0+"' width='"+1000+"'>");
+        if(rs1.next()){
+            out.println("<tr ><td colspan='"+4+"'  align=\"center\"><font color=\"white\" size='"+5+"'>"+rs1.getString("cname")+"</font></td></tr>");
+        }
+       out.println("<tr align=\"center\">");
+        ResultSet rs = st.executeQuery("select * from product where cid=1006");
+
+        while(rs.next()) {
+            count=count+1;
+            if(count<=4){
+           out.println("<td>"+"<img src="+rs.getString("path")+"class=\"iwh\"/>"+"<br/><br/><br>"+rs.getString("name")+"<br/>"+rs.getString("qty")+rs.getString("qtype")+"....Rs."+rs.getString("price")+"<br/><br/>qty:<input type=\"text\" name="+rs.getString("tname")+"id=\"sindhu\" value='"+1+"' class=\"tw\"/><br/><br/><input type=\"submit\" name="+rs.getString("aname")+" id="+rs.getString("aid")+" value=\"Add to Cart\" />"+"</td>");
+                       }
+                       
+                 
+                         
+           else if(count==5){
+               out.println("</tr>");
+             out.println("<tr align=\"center\">");
+                 out.println("<td>"+"<img src="+rs.getString("path")+"class=\"iwh\"/>"+"<br/><br/><br>"+rs.getString("name")+"<br/>"+rs.getString("qty")+rs.getString("qtype")+"....Rs."+rs.getString("price")+"<br/><br/>qty:<input type=\"text\" name="+rs.getString("tname")+"id=\"sindhu\" value='"+1+"' class=\"tw\"/><br/><br/><input type=\"submit\" name="+rs.getString("aname")+" id="+rs.getString("aid")+" value=\"Add to Cart\" />"+"</td>");
+                         }
+                       else if(count>5&&count<=8){
+                           out.println("<td>"+"<img src="+rs.getString("path")+"class=\"iwh\"/>"+"<br/><br/><br>"+rs.getString("name")+"<br/>"+rs.getString("qty")+rs.getString("qtype")+"....Rs."+rs.getString("price")+"<br/><br/>qty:<input type=\"text\" name="+rs.getString("tname")+"id=\"sindhu\" value='"+1+"' class=\"tw\"/><br/><br/><input type=\"submit\" name="+rs.getString("aname")+" id="+rs.getString("aid")+" value=\"Add to Cart\" />"+"</td>");
+                       }
+                       else if(count==9){
+                            out.println("</tr>");
+             out.println("<tr align=\"center\">");
+                 out.println("<td>"+"<img src="+rs.getString("path")+"class=\"iwh\"/>"+"<br/><br/><br>"+rs.getString("name")+"<br/>"+rs.getString("qty")+rs.getString("qtype")+"....Rs."+rs.getString("price")+"<br/><br/>qty:<input type=\"text\" name="+rs.getString("tname")+"id=\"sindhu\" value='"+1+"' class=\"tw\"/><br/><br/><input type=\"submit\" name="+rs.getString("aname")+" id="+rs.getString("aid")+" value=\"Add to Cart\" />"+"</td>");
+                         
+                       }
+                       else if(count>9&&count<=12){
+                           out.println("<td>"+"<img src="+rs.getString("path")+"class=\"iwh\"/>"+"<br/><br/><br>"+rs.getString("name")+"<br/>"+rs.getString("qty")+rs.getString("qtype")+"....Rs."+rs.getString("price")+"<br/><br/>qty:<input type=\"text\" name="+rs.getString("tname")+"id=\"sindhu\" value='"+1+"' class=\"tw\"/><br/><br/><input type=\"submit\" name="+rs.getString("aname")+" id="+rs.getString("aid")+" value=\"Add to Cart\" />"+"</td>");           
+                       }
+               } out.println("</tr></table>");
+         out.println("</center>");
+            }
+    catch (Exception e) {
+        out.println(e);
+    }
+%>
+<br/><br/><br/>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<%@ page import="java.sql.*"%>
+<html>
+<head>
+<title>BookShoppe.com</title>
+<link rel='stylesheet' type='text/css' href='./css/styles_3.css' />
+<link rel='stylesheet' type='text/css' href='./css/mybutton.css' />
+<link rel='stylesheet' type='text/css' href='./css/abc.css' />
+<script type="text/javascript" language="javascript">
+function validate(){
+if(document.getElementById("qty").value==""){
+alert("Please enter the no. of books ");
+return false;
+}
+return true;
+}
+</script>
+<style type="text/css">
+    .td{
+    text-align:center; 
+    vertical-align:middle;
+}
+table{
+    font-family: cursive;
+    color:#585858;
+    margin-top: 60px;
+    margin-bottom: 30px;
+}
+body
+{
+background: url("./images/grey.jpg");
+background-repeat:repeat;
+}
+</style>
+</head>
+<body><img src="./images/buk.jpg" align="left" width="1350" height="130">
+</br></br></br><br/><br/>
+<div id='cssmenu'>
+<ul>  
+<li class='active'><a href='home.jsp'><span>Home</span></a></li>
+<li><a href='book.jsp'><span>Books</span></a></li> 
+<li><a href='author.jsp'><span>Authors</span></a></li>
+<li><a href='about.jsp'><span>About Us</span></a></li>  
+<li><a href='contact.jsp'><span> Contact Us</span></a></li>  
+<li><a href='feed.jsp'><span>Feed Back</span></a></li>     
+<li><a href='categ.jsp'><span>Categories</span></a></li>
+<li><a href='logout.jsp'><span>Logut</span></a></li></ul>
+</div>
+<br/><br/>
+
+<center>
+    <form name="form" method="post"  align="center" onSubmit="return validate();" action="add.jsp"; >
+<table  border="1" class="two"  width="1000" style="margin-left:100px;" valign="middle">
+    <tr>
+        <th>Image</center></th>
+        <th>Description</th>
+        <th>Qty</th>
+        <th>Price</th>
+        <th>Sub Total </th>
+    </tr>
+<tr><td align="center"><img src="./images/1.jpeg" width="100" height="100" /></td>
+<td>Title:Organic Chemistry</td>
+<td><input type="text" name="qty" id="qty"/></td>
+<td>Price:645/-</td>
+<td>645/-</td> </tr>
+</table>
+
+          <input id="shiny" type="submit" value="Place order" style="margin-left:40;"/>
+    </form>
+<form name="form" method="post"  onSubmit="return validate();" action="home.jsp"; >
+  <input id="shiny" type="submit" value="Continue Shopping" style="margin-left:40;">
+</center> 
+
+
+
+<%
+
+
+String c=request.getParameter("sname");
+out.println(c);
+     try {
+        Class.forName("com.mysql.jdbc.Driver");
+  Connection con = null;
+        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/book", "root", "lekha");
+        Statement st = con.createStatement();
+        ResultSet rs4= st.executeQuery("select * from book where aname="+c);
+                        int count=0;
+out.println("<table class=\"one\" border='"+1+"' cellspacing='"+20+"' cellpadding='"+6+"' bgcolor=\"white\"  valign=\"middle\" >");  
+               while(rs4.next()){          
+   out.println("<td>"+"<img src="+rs4.getString("path")+" class=\"me\"/>"+"<br/><br/>"+rs4.getString("bname")+"<br/>By :"+rs4.getString("author")+"</br><br/>Rs.."+rs4.getString("uprice")+"/-<br/>qty:<input type=\"text\" name="+rs4.getString("tname")+"id=\"lekha\" value='"+1+"' class=\"me1\"/><br/><br/><input type=\"submit\" id=\"shiny\" name="+rs4.getString("aname")+" value=\"Add to Cart\" />"+"</td>");
+   
+                }
+out.println("</table>");
+}     
+
+     catch (Exception e) {
+        out.println(e);
+    }
+    
+%>
+</body>
+
+</html>

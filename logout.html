@@ -1,0 +1,60 @@
+<html>
+<head>
+<title>BookShoppe.com</title>
+<link rel='stylesheet' type='text/css' href='./css/styles_3.css' />
+<link rel='stylesheet' type='text/css' href='./css/mybutton.css' />
+<link rel='stylesheet' type='text/css' href='./css/abc.css' />
+<link rel='stylesheet' type='text/css' href='./css/styles.css' />
+<link rel='stylesheet' type='text/css' href='./css/button.css' />
+
+<style type="text/css">
+.image{
+        float:right;
+    }
+table{
+    font-family: cursive;
+    float:left;
+    color:white;
+    margin-left:200;
+    margin-top:70;
+    font-weight: bolder;
+    font-size: 20;
+}
+body
+{
+background: url("./images/grey.jpg");
+background-repeat:repeat;
+
+}
+</style>
+</head>   
+<img src="./images/buk.jpg" align="left" width="1350" height="130">
+</br></br></br><br/><br/>
+<div id='cssmenu'>
+<ul>  
+<li class='active'><a href='home.jsp'><span>Home</span></a></li>
+<li><a href='about.jsp'><span>About Us</span></a></li>  
+<li><a href='book.jsp'><span>Books</span></a></li> 
+<li><a href='author.jsp'><span>Authors</span></a></li>
+<li><a href='categ.jsp'><span>Categories</span></a></li>
+<li><a href='contact.jsp'><span> Contact Us</span></a></li>  
+<li><a href='feed.jsp'><span>Feed Back</span></a></li>     
+<li><a href='logout.jsp'><span>Logout</span></a></li>
+
+</ul>
+</div>
+<br/><br/>
+<body>
+<br/><br/><br/><br/>
+<br/><br/><br/><br/>
+<% session.invalidate(); 
+out.println("<font color=black size=6>");
+out.println("You have been logged out!");
+out.println("</font>");
+%>
+<form name="frm">
+    <a href="ilog.jsp" class="button">
+     <span><center>Ok</center></span>
+</a>
+    </body>
+</html>

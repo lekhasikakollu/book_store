@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>Login</title>
+<link rel='stylesheet' type='text/css' href='./css/styles.css' />	
+<link rel='stylesheet' type='text/css' href='./css/button.css' />
+<script type="text/javascript" language="javascript">
+function validate(){
+if(((document.getElementById("uname").value).search(/[^A-Za-z]/) != -1)||
+    (document.getElementById("uname").value=="")){
+alert("Invalid Username ");
+return false;
+}
+if(document.getElementById("pass").value == ""){
+ alert("Invalid Password!");
+  return false;
+}
+return true;
+}
+</script>
+<style type="text/css">
+body{
+background-color:#BDBDBD;
+background-repeat:no-repeat;
+background-size:cover;
+background: url("./images/grey.jpg");
+background-repeat:repeat;
+font-family: cursive;
+}
+
+</style>
+</head>
+
+<body>
+
+<img src="./images/buk.jpg"  width="1350" height="130">
+<br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<font color="black" size="5">OOPS!! There was an error!</br> <br/>
+Press
+<form name="form" method="post"  align="center" onSubmit="return validate();" action="check.jsp";>
+<a href="userlogin.jsp" class="button">
+     <span><center>Login</center></span>
+</a>to login or 
+<a href="signup.jsp" class="button">
+     <span><center>Sign Up</center></span>
+</a> to Sign Up
+</form>
+</body>
+</html>

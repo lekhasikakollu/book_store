@@ -1,0 +1,51 @@
+<html>
+<head>
+<title>Login</title>
+<link rel='stylesheet' type='text/css' href='./css/styles.css' />	
+<link rel='stylesheet' type='text/css' href='./css/button.css' />
+<script type="text/javascript" language="javascript">
+function validate(){
+if(((document.getElementById("uname").value).search(/[^A-Za-z]/) != -1)||
+    (document.getElementById("uname").value=="")){
+alert("Invalid Username ");
+return false;
+}
+if(document.getElementById("pass").value == ""){
+ alert("Please enter the  Password!");
+  return false;
+}
+return true;
+}
+</script>
+<style type="text/css">
+    .a {
+	border:2px solid #456879;
+	border-radius:10px;
+	height: 30px;
+	width: 230px;
+}
+    body{
+background-color:#BDBDBD;
+background-repeat:no-repeat;
+background-size:cover;
+background: url("./images/grey.jpg");
+background-repeat:repeat;
+font-family: cursive;
+}
+
+</style>
+</head>
+
+<body>
+
+<img src="./images/buk.jpg"  width="1350" height="130">
+<br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<form name="form" method="post"  align="center" onSubmit="return validate();" action="check.jsp";>
+<font color="black" size="4">Username <font color="red"> * </font> :<input type="text" name="user"  id="uname" class="a" /></font>
+</br><br/>
+<font color="black" size="4">Password <font color="red"> * </font> :<input type="password" name="password" id="pass" class="a" /></font>
+</br><br/>
+<input type="submit" value="Login" name="Login" id="submit"/>
+</form>
+</body>
+</html>

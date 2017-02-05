@@ -1,0 +1,67 @@
+<html>
+<head>
+<title>BookShoppe.com</title>
+<link rel='stylesheet' type='text/css' href='./css/styles_3.css' />
+<link rel='stylesheet' type='text/css' href='./css/mybutton.css' />
+<link rel='stylesheet' type='text/css' href='./css/abc.css' />
+<style type="text/css">
+
+table{
+    font-family: cursive;
+    size: 20px;
+    align:center;
+    margin-left:300px;
+   }
+ 
+
+body
+{
+background: url("./images/grey.jpg");
+background-repeat:repeat;
+font-family: cursive;
+}
+</style>
+</head>
+<img src="./images/buk.jpg" align="left" width="1350" height="130">
+</br></br></br><br/><br/>
+<div id='cssmenu'>
+<ul>  
+<li class='active'><a href='home.jsp'><span>Home</span></a></li>
+<li><a href='book.jsp'><span>Books</span></a></li> 
+<li><a href='author.jsp'><span>Authors</span></a></li>
+<li><a href='about.jsp'><span>About Us</span></a></li>  
+<li><a href='contact.jsp'><span> Contact Us</span></a></li>  
+<li><a href='feed.jsp'><span>Feed Back</span></a></li>     
+<li><a href='categ.jsp'><span>Categories</span></a></li>
+<li><a href='logout.jsp'><span>Logut</span></a></li></ul>
+</div>
+<br/><br/>
+<body>
+
+<center>Order Summary:
+<table  border="1" align="center"class="two"  style="margin-left:350px;">
+    <tr>
+       
+        <th>Description</th>
+        <th>Qty</th>
+        <th>Price</th>
+        <th>Sub Total </th>
+          
+    </tr>
+    <tr>
+<td>
+Title:Organic Chemistry</br><br/>
+Edition:7th<br/><br/></td>
+<td><input type="text" name="qty" id="qty"/></td>
+<td>Price:645/-</td>
+<td>645/-</td> </tr>
+    <br/><b/><br/>
+
+
+</table>
+Amount Payable:Rs.645/-
+    <br/><br/>
+    <a href="pin.jsp"    >
+<input id="shiny" type="submit" value="Continue" /></a></center>
+</body>
+</html>

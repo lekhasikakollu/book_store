@@ -1,0 +1,95 @@
+<%@ page import="java.sql.*"%>
+<html>
+<head>
+<title>BookShoppe.com</title>
+<link rel='stylesheet' type='text/css' href='./css/styles_3.css' />
+<link rel='stylesheet' type='text/css' href='./css/mybutton.css' />
+<link rel='stylesheet' type='text/css' href='./css/x.css' />
+
+<style type="text/css">
+.image{
+        float:right;
+    }
+table{
+    font-family: cursive;
+    float:left;
+    color:black;
+    margin-left:200;
+    margin-top:50;
+    font-weight: bolder;
+    font-size: 20;
+}
+body
+{
+background: url("./images/bak.jpg");
+background-repeat:cover;
+
+}
+</style>
+</head>   
+<img src="./images/buk.jpg" align="left" width="1350" height="130">
+
+<div id='cssmenu'>
+<ul>  
+<li class='active'><a href='home.jsp'><span>Home</span></a></li>
+<li><a href='about.jsp'><span>About Us</span></a></li>  
+<li><a href='book.jsp'><span>Books</span></a></li> 
+<li><a href='author.jsp'><span>Authors</span></a></li>
+<li><a href='categ.jsp'><span>Categories</span></a></li>
+<li><a href='contact.jsp'><span> Contact Us</span></a></li>  
+<li><a href='feed.jsp'><span>Feed Back</span></a></li>     
+<li><a href='logout.jsp'><span>Logout</span></a></li>
+
+</ul>
+</div>
+<br/><br/>
+<body>
+
+
+    
+</body>
+
+<%
+    
+    try {
+        Class.forName("com.mysql.jdbc.Driver");
+  Connection con = null;
+        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/book", "root", "lekha");
+        Statement st = con.createStatement();
+        ResultSet rsh= st.executeQuery("select * from cat where cid!=1004");
+                        int count=0;
+out.println("<table   cellspacing='"+20+"' cellpadding='"+6+"'   valign=\"center\" >");  
+out.println("<tr align=\"center\">");    
+
+   while(rsh.next()){
+     count=count+1;
+     if(count<=4){
+    out.println("<td><a href=\"mybook.jsp?cno="+rsh.getString("cid")+"\">"+"<img src="+rsh.getString("path")+" class=\"me2\"/>"+"</a></td>");
+    }
+         else if(count==5){
+              out.println("</tr>");
+             out.println("<tr align=\"center\">");
+             out.println("<td><a href=\"mybook.jsp?cno="+rsh.getString("cid")+"\">"+"<img src="+rsh.getString("path")+" class=\"me2\"/>"+"</a></td>");
+   
+         }
+         else if(count>5&&count<=8){
+             out.println("<td><a href=\"mybook.jsp?cno="+rsh.getString("cid")+"\">"+"<img src="+rsh.getString("path")+" class=\"me2\"/>"+"</a></td>");
+    
+             
+                         }
+     
+         }
+                
+out.println("</tr></table>");
+
+
+               
+               
+
+}     
+
+     catch (Exception e) {
+        out.println(e);
+    }
+%>
+</html>
